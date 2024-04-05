@@ -1,0 +1,14 @@
+/* Add this CSS to your stylesheet */
+.card-img-top-container {
+    height: 240px; /* Fixed height for the image container */
+    overflow: hidden; /* Ensures the image doesn't escape the container */
+    display: flex; /* Enables the use of align-items */
+    align-items: center; /* Vertically centers the image if it's not tall enough */
+  }
+  
+  .card-img-top-container img {
+    width: 100%; /* Ensures the image covers the full width of the container */
+    height: auto; /* Allows the image to maintain its aspect ratio */
+    object-fit: cover; /* Ensures the image covers the container, cropping as necessary */
+  }
+  
