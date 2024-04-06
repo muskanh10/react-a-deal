@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
+import { useSelector, useDispatch } from "react-redux";
+import { getAllCarts, getCartItemsCount, getCartTotal } from '../../store/cartSlice';
 
 const Header = () => {
+  
+  const dispatch = useDispatch();
+  const carts = useSelector(getAllCarts);
+  const itemsCount = useSelector(getCartItemsCount);
+  useEffect(() => {
+    dispatch(getCartTotal());
+  }, [carts])
   return (
     <>
     <nav className="navbar bg-body-tertiary">
@@ -11,7 +20,7 @@ const Header = () => {
         <form className="d-flex" role="search">
           <Link to = "/cart" className="btn btn-outline-success" type="submit">
           <i class="bi bi-cart"></i>
-          <span className="ms-3 badge rounded-pill bg-dark">0</span>
+          <span className="ms-3 badge rounded-pill bg-dark">{itemsCount}</span>
           </Link>
         </form>
       </div>

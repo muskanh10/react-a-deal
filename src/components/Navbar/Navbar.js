@@ -1,20 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useSelector, useDispatch } from 'react-redux';
-import { getAllCategories, fetchAsyncCategories } from '../../store/categorySlice';
+import { useSelector, useDispatch } from "react-redux";
+import {
+  getAllCategories,
+  fetchAsyncCategories,
+} from "../../store/categorySlice";
+
 
 const Navbar = () => {
   const dispatch = useDispatch();
   const categories = useSelector(getAllCategories);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  const womenCategories = categories.filter(category => category.startsWith('women'));
-  const menCategories = categories.filter(category => category.startsWith('men'));
-  const otherCategories = categories.filter(category => !category.startsWith('women') && !category.startsWith('men'));
+  const handleSearchTerm = (e) => {
+    e.preventDefault();
+    setSearchTerm(e.target.value);
+  }
 
+  const womenCategories = categories.filter((category) =>
+    category.startsWith("women")
+  );
+  const menCategories = categories.filter((category) =>
+    category.startsWith("men")
+  );
+  const otherCategories = categories.filter(
+    (category) => !category.startsWith("women") && !category.startsWith("men")
+  );
 
-  useEffect(() =>{
-    dispatch(fetchAsyncCategories())
-  }, [dispatch])
+  useEffect(() => {
+    dispatch(fetchAsyncCategories());
+  }, [dispatch]);
 
   return (
     <nav className="navbar bg-body-tertiary">
@@ -27,9 +42,10 @@ const Navbar = () => {
                 type="text"
                 placeholder="Search"
                 aria-label="Search"
+                onChange={(e) => handleSearchTerm(e)}
               />
               <div className="input-group-append">
-                <Link to="#" className="btn btn-outline-secondary">
+                <Link to={`search/${searchTerm}`} className="btn btn-outline-secondary">
                   <i className="bi bi-search"></i>
                 </Link>
               </div>
@@ -48,47 +64,82 @@ const Navbar = () => {
           </ul>
         </div> */}
         <div className="row w-100 text-center mt-2">
-      <ul className="d-flex justify-content-around" style={{ listStyleType: 'none' }}>
+          <ul
+            className="d-flex justify-content-around align-items-center"
+            style={{ listStyleType: "none" }}
+          >
+            {/* Women Categories Dropdown */}
+            <li>
+              <div className="dropdown">
+                <button
+                  className="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton1"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Women
+                </button>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton1"
+                >
+                  {womenCategories.map((category, idx) => (
+                    <li key={idx}>
+                      <Link
+                        to={`category/${category}`}
+                        className="dropdown-item text-capitalize"
+                      >
+                        {category.replace("women-", "").replace("-", " ")}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
 
-        {/* Women Categories Dropdown */}
-        <li>
-          <div className="dropdown">
-            <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-              Women
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-              {womenCategories.map((category, idx) => (
-                <li key={idx}>
-                  <Link to={`category/${category}`} className='dropdown-item text-capitalize'>{category.replace("women-", "").replace("-", " ")}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
-
-        {/* Men Categories Dropdown */}
-        <li>
-          <div className="dropdown">
-            <button className="btn dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
-              Men
-            </button>
-            <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-              {menCategories.map((category, idx) => (
-                <li key={idx}>
-                  <Link to={`category/${category}`} className='dropdown-item text-capitalize'>{category.replace("men-", "").replace("-", " ")}</Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </li>
-        {/* Other Categories */}
-        {otherCategories.map((category, idx) => (
-          <li key={idx}>
-            <Link to={`category/${category}`} className='nav-link text-capitalize'>{category.replace("-", " ")}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+            {/* Men Categories Dropdown */}
+            <li>
+              <div className="dropdown">
+                <button
+                  className="btn dropdown-toggle"
+                  type="button"
+                  id="dropdownMenuButton2"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  Men
+                </button>
+                <ul
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton2"
+                >
+                  {menCategories.map((category, idx) => (
+                    <li key={idx}>
+                      <Link
+                        to={`category/${category}`}
+                        className="dropdown-item text-capitalize"
+                      >
+                        {category.replace("men-", "").replace("-", " ")}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </li>
+            {/* Other Categories */}
+            {otherCategories.map((category, idx) => (
+              <li key={idx}>
+                <Link
+                  to={`category/${category}`}
+                  className="nav-link text-capitalize"
+                >
+                  {category.replace("-", " ")}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </nav>
   );

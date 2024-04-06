@@ -8,7 +8,6 @@ import {
   getAllProducts,
   getAllProductsStatus,
 } from "../../store/productSlice";
-import Loader from "../../components/Loader/Loader";
 import { STATUS } from "../../utils/status";
 
 const HomePage = () => {
@@ -20,7 +19,6 @@ const HomePage = () => {
   }, []);
 
   const products = useSelector(getAllProducts);
-  console.log(products);
   const productStatus = useSelector(getAllProductsStatus);
   const sortedProducts = products.slice().sort((a, b) => b.discountPercentage - a.discountPercentage);
 
@@ -35,7 +33,11 @@ const HomePage = () => {
       </div>
       <div className="container pb-5 px-lg-5">
         
-      { productStatus === STATUS.LOADING ? <Loader /> : <ProductList products = {sortedProducts}/>}
+      { productStatus === STATUS.LOADING ? <div class="text-center">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div> : <ProductList products = {sortedProducts}/>}
       </div>
     </>
   );
