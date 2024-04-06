@@ -16,7 +16,7 @@ const Header = () => {
     <>
     <nav className="navbar bg-body-tertiary">
       <div className="container-fluid">
-        <Link to="/" className="navbar-brand">React-A-Deal</Link>
+        <Link to="/" className="h2 mx-3">React-A-Deal</Link>
         <form className="d-flex" role="search">
           <Link to = "/cart" className="btn btn-outline-success" type="submit">
           <i class="bi bi-cart"></i>

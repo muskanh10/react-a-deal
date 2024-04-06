@@ -52,21 +52,10 @@ const Navbar = () => {
             </div>
           </form>
         </div>
-        {/* <div className="row w-100 text-center mt-2">
-          <ul className="d-flex justify-content-around" style={{listStyleType:'none'}}>
-            {
-            categories.slice(0,14).map((category, idx) => (
-              <li key = {idx}>
-                <Link to = {`category/${category}`} className='nav-link text-capitalize'>{category.replace("-", " ")}</Link>
-              </li>
-            ))
-            }
-          </ul>
-        </div> */}
         <div className="row w-100 text-center mt-2">
           <ul
             className="d-flex justify-content-around align-items-center"
-            style={{ listStyleType: "none" }}
+            style={{ listStyleType: "none", flexWrap: 'wrap' }}
           >
             {/* Women Categories Dropdown */}
             <li>
