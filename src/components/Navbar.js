@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   getAllCategories,
   fetchAsyncCategories,
-} from "../../store/categorySlice";
+} from "../store/categorySlice";
 
 
 const Navbar = () => {

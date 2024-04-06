@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "./Navbar";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllCarts, getCartItemsCount, getCartTotal } from '../../store/cartSlice';
+import { getAllCarts, getCartItemsCount, getCartTotal } from '../store/cartSlice';
 
 const Header = () => {
   

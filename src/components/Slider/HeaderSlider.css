@@ -1,78 +1,25 @@
 
-/* .slider-container {
-    max-width: 100%;
-    margin: auto;
-    overflow: hidden; 
-  }
-  
-  .slider-slide {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    max-height: 400px; 
-  }
-  
-  .slider-slide img {
-    max-width: 100%;
-    max-height: 100%;
-    object-fit: cover;
-  }
-   */
-  /* .image-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr); 
-    gap: 10px;
-  }
-  
-  .image-link img {
-    width: 100%;
-    height: auto;
-    display: block; 
-  }
-   */
-   
-/* .image-grid {
+.image-grid {
   display: grid;
-  gap: 10px; 
+  gap: 10px;
 }
 
 .top-row {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 400px; 
 }
 
 .bottom-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr); 
+  grid-auto-rows: 300px; 
 }
 
 .image-link img {
   width: 100%;
-  height: auto;
-  display: block; 
-} */
-
-.image-grid {
-  display: grid;
-  gap: 10px; /* Adjust the gap as needed */
-}
-
-.top-row {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates a 2-column grid for the top row */
-  grid-auto-rows: 400px; /* Sets the row height for the top row */
-}
-
-.bottom-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates a 3-column grid for the bottom row */
-  grid-auto-rows: 300px; /* Sets the row height for the bottom row */
-}
-
-.image-link img {
-  width: 100%;
-  height: 100%; /* This will stretch the image to fill the container */
-  object-fit: cover; /* Ensures the image covers the area, may crop */
-  opacity: 0.8; /* Reduce the opacity of the image */
-  display: block; /* Ensures there's no extra space under the images */
+  height: 100%; 
+  object-fit: cover; 
+  opacity: 0.8; 
+  display: block;
 }

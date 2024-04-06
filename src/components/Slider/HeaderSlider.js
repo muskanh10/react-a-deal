@@ -18,19 +18,6 @@ const HeaderSlider = () => {
     slidesToScroll: 1,
   };
 
-  // return (
-  //   <div className="container-fluid">
-  //     <div className="slider-container">
-  //       <Slider {...settings}>
-  //         {sliderImgs.map((img, index) => (
-  //           <div key={index} className="slider-slide">
-  //             <img src={img} alt={`Slide ${index + 1}`} />
-  //           </div>
-  //         ))}
-  //       </Slider>
-  //     </div>
-  //   </div>
-  // );
   return (
     <div className="container-fluid">
       <div className="slider-container">

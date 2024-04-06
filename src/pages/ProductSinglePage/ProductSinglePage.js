@@ -15,7 +15,7 @@ import {
   setCartMessageOff,
   setCartMessageOn,
 } from "../../store/cartSlice";
-import CartMessage from "../../components/CartMessage/CartMessage";
+import CartMessage from "../../components/CartMessage";
 
 const ProductSinglePage = () => {
   const { id } = useParams();
